@@ -99,7 +99,7 @@ function PostPage() {
       <div className="px-10 py-5 -my-5 bg-white border border-t-0 border-gray-300 rounded-b-md">
         <hr className="py-2" />
 
-        {post?.comments.map((comment) => (
+        {post?.comments.map((comment: any) => (
           <div
             className="relative flex items-center space-x-2 space-y-5"
             key={comment.id}
