@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -37,8 +38,6 @@ function PostPage() {
   } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    // post comment here...
-
     const notification = toast.loading("Posting your comment...");
 
     try {
@@ -63,6 +62,11 @@ function PostPage() {
 
   return (
     <div className="max-w-5xl mx-auto my-7">
+      <Head>
+        <title>
+          {post?.title} : {post?.subreddit[0]?.topic}
+        </title>
+      </Head>
       <Post post={post} />
 
       <div className="p-5 pl-16 -mt-1 bg-white border border-t-0 border-gray-300 rounded-b-md">
@@ -84,6 +88,7 @@ function PostPage() {
             {...register("comment")}
           />
           <button
+            disabled={!session}
             type="submit"
             className="p-3 font-semibold text-white bg-blue-500 rounded-full disabled:bg-gray-200"
           >

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import Avatar from "../../../components/Avatar";
@@ -11,6 +12,9 @@ function Subreddit() {
 
   return (
     <div className="h-24 p-8 bg-red-400">
+      <Head>
+        <title> Welcome to the r/{topic} subreddit</title>
+      </Head>
       <div className="mt-10 -mx-8 bg-white">
         <div className="flex items-center max-w-5xl pb-3 mx-auto space-x-4">
           <div className="-mt-5">
